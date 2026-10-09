@@ -1,0 +1,420 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d1b">
+  <meta name="description" content="Meet Modegli AI, your AI assistant for everyday business. Organize tasks, manage reminders, and simplify customer interactions.">
+  <title>Modegli AI — Your AI Assistant for Everyday Business</title>  <style>
+    :root {
+      --bg: #080d1b;
+      --panel: #101a30;
+      --text: #f4f7ff;
+      --muted: #aab7d0;
+      --accent: #6d8cff;
+      --cyan: #45e0d0;
+      --border: rgba(255,255,255,.1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,13,27,.9);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -.6px;
+    }
+
+    .logo span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 21px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), #8063ee);
+      color: white;
+      font-weight: 700;
+      transition: transform .2s, opacity .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); opacity: .92; }
+
+    .button-outline {
+      background: transparent;
+      border: 1px solid var(--border);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 105px 0 95px;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      left: 50%;
+      top: -260px;
+      transform: translateX(-50%);
+      background: rgba(86,112,255,.18);
+      filter: blur(100px);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 14px;
+      border: 1px solid rgba(69,224,208,.3);
+      border-radius: 50px;
+      color: var(--cyan);
+      background: rgba(69,224,208,.06);
+      font-size: .85rem;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: auto;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, var(--cyan), #8ba3ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 25px auto 32px;
+      color: var(--muted);
+      font-size: 1.12rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: .84rem;
+      color: #8190ab;
+    }
+
+    section { padding: 78px 0; }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 42px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    .section-heading p { color: var(--muted); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, rgba(19,31,55,.95), rgba(13,21,39,.95));
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+
+    .icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 15px;
+      background: rgba(109,140,255,.13);
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+
+    .card h3 { font-size: 1.15rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .96rem; }
+
+    .about-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 45px;
+      padding: 40px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+    }
+
+    .about-box h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .about-box p { color: var(--muted); margin-bottom: 22px; }
+
+    .visual {
+      min-height: 290px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background:
+        radial-gradient(circle at 50% 45%, rgba(69,224,208,.18), transparent 45%),
+        linear-gradient(145deg, #111f3d, #0b1223);
+      border: 1px solid var(--border);
+    }
+
+    .robot {
+      font-size: 6rem;
+      filter: drop-shadow(0 0 25px rgba(69,224,208,.22));
+    }
+
+    .cta { text-align: center; }
+
+    .cta-box {
+      padding: 55px 25px;
+      border-radius: 25px;
+      border: 1px solid rgba(109,140,255,.28);
+      background: linear-gradient(135deg, rgba(109,140,255,.12), rgba(69,224,208,.06));
+    }
+
+    .cta h2 { font-size: clamp(1.8rem, 4vw, 2.7rem); margin-bottom: 14px; }
+    .cta p { color: var(--muted); margin: 0 auto 25px; max-width: 600px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .footer-links a:hover { color: white; }
+
+    @media (max-width: 760px) {
+      .nav-links { gap: 13px; font-size: .85rem; }
+      .nav-links .optional { display: none; }
+      .hero { padding: 78px 0 65px; }
+      .grid { grid-template-columns: 1fr; }
+      .about-box { grid-template-columns: 1fr; padding: 24px; }
+      section { padding: 58px 0; }
+    }
+  </style></head><body>
+  <header>
+    <div class="container">
+      <nav aria-label="Main navigation">
+        <a class="logo" href="#home">Modegli<span> AI</span></a>    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a class="optional" href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</div>
+
+  </header>  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="badge">AI-powered assistance</div>    <h1>Your AI Assistant for <span>Everyday Business</span></h1>
+
+    <p>
+      Meet Modegli AI — a smarter way to organize tasks, manage reminders,
+      communicate with customers, and simplify everyday work.
+    </p>
+
+    <div class="hero-actions">
+      <!-- Replace YOUR_BOT_USERNAME with the actual Telegram username -->
+      <a class="button" href="https://t.me/YOUR_BOT_USERNAME" target="_blank" rel="noopener noreferrer">
+        Try Modegli AI on Telegram →
+      </a>
+      <a class="button button-outline" href="#features">Explore Features</a>
+    </div>
+
+    <div class="note">
+      Built to make everyday tasks simpler, one conversation at a time.
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="container">
+    <div class="section-heading">
+      <h2>One assistant. More possibilities.</h2>
+      <p>
+        Modegli AI is being developed to help individuals and businesses
+        handle everyday tasks through a simple conversational experience.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <div class="icon">💬</div>
+        <h3>AI Conversations</h3>
+        <p>
+          Ask questions, explore ideas, and get help with everyday tasks
+          through natural conversations.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">⏰</div>
+        <h3>Reminders & Organization</h3>
+        <p>
+          Keep track of important tasks and reminders so fewer things
+          slip through the cracks.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🧠</div>
+        <h3>Conversational Memory</h3>
+        <p>
+          Use supported memory features to make your assistant more useful
+          across conversations.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🏢</div>
+        <h3>Business Tools</h3>
+        <p>
+          Modegli is being developed to support business owners with
+          activity management and customer interactions.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">📅</div>
+        <h3>Booking Management</h3>
+        <p>
+          The planned business workflow aims to help customers explore
+          services and manage booking requests.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="icon">🌍</div>
+        <h3>Designed to Grow</h3>
+        <p>
+          Starting with Telegram, Modegli AI is designed with room to
+          expand as the product evolves.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <div class="about-box">
+      <div>
+        <h2>Technology that works for people.</h2>
+        <p>
+          Modegli AI is an evolving project focused on making useful
+          technology easier to access. The goal is to bring assistance,
+          organization, and business support into one simple experience.
+        </p>
+        <a class="button button-outline" href="#contact">Get in Touch</a>
+      </div>
+
+      <div class="visual" aria-label="Modegli AI robot illustration">
+        <div class="robot" role="img" aria-label="Friendly robot">🤖</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Let's build something useful.</h2>
+      <p>
+        Have a question, feedback, or an idea for Modegli AI?
+        We'd like to hear from you.
+      </p>
+      <a class="button" href="mailto:modeglicontact@gmail.com">
+        Contact Modegli AI
+      </a>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Modegli AI. All rights reserved.</div>  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:modeglicontact@gmail.com">Contact</a>
+  </div>
+</div>
+
+  </footer>  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script></body>
+  </html>
