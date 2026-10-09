@@ -1,40 +1,33 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#ffffff">  <title>Modegli AI | Your Business, Made Simpler</title>  <meta name="description" content="Meet Modegli AI, your intelligent assistant for everyday tasks, reminders, customer communication, and business management.">  <meta name="robots" content="index, follow">  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">  <style>
+  <meta name="theme-color" content="#ffffff">
+
+  <title>Modegli AI — Your Smart Assistant</title>
+  <meta name="description" content="Meet Modegli AI, your smart assistant for everyday tasks, reminders, and business support.">
+
+  <style>
     :root {
-      --black: #111111;
-      --dark: #202020;
-      --gray: #666666;
-      --light-gray: #f6f6f6;
-      --border: #e7e7e7;
-      --white: #ffffff;
+      --background: #ffffff;
+      --text: #111111;
+      --muted: #666666;
       --accent: #635bff;
-      --accent-light: #f0efff;
-      --radius: 18px;
-      --max-width: 1160px;
+      --border: #eeeeee;
+      --soft: #f8f8fb;
     }
 
     * {
       box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
     }
 
     body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
     }
 
     a {
@@ -42,1108 +35,294 @@
       text-decoration: none;
     }
 
-    button,
-    a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--accent);
-      outline-offset: 4px;
-    }
-
     .container {
-      width: min(var(--max-width), calc(100% - 48px));
-      margin-inline: auto;
+      width: min(100% - 40px, 1000px);
+      margin: 0 auto;
     }
 
-    /* Header */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(14px);
+    header {
       border-bottom: 1px solid var(--border);
     }
 
-    .navbar {
-      min-height: 78px;
+    .nav {
+      min-height: 76px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 28px;
+      justify-content: space-between;
+      gap: 16px;
     }
 
     .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-      white-space: nowrap;
-    }
-
-    .brand-symbol {
-      width: 36px;
-      height: 36px;
-      display: grid;
-      place-items: center;
-      background: var(--black);
-      color: var(--white);
-      border-radius: 11px;
-    }
-
-    .brand-symbol svg {
-      width: 23px;
-      height: 23px;
-    }
-
-    .brand-ai {
-      color: var(--accent);
-    }
-
-    .nav-links {
       display: flex;
-      align-items: center;
-      gap: 30px;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .nav-links > a:not(.button) {
-      color: #454545;
-      transition: color 0.2s;
-    }
-
-    .nav-links > a:not(.button):hover {
-      color: var(--accent);
-    }
-
-    /* Buttons */
-
-    .button {
-      min-height: 48px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 22px;
-      border: 1px solid var(--black);
-      border-radius: 9px;
-      background: var(--black);
-      color: var(--white);
-      font-size: 0.92rem;
-      font-weight: 600;
-      transition:
-        background 0.2s,
-        color 0.2s,
-        border-color 0.2s,
-        transform 0.2s;
-    }
-
-    .button:hover {
-      background: #333333;
-      border-color: #333333;
-      transform: translateY(-2px);
-    }
-
-    .button-light {
-      background: var(--white);
-      color: var(--black);
-      border-color: #d5d5d5;
-    }
-
-    .button-light:hover {
-      background: var(--light-gray);
-      border-color: #bbbbbb;
-      color: var(--black);
-    }
-
-    .button svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* Hero */
-
-    .hero {
-      padding: 104px 0 92px;
-      overflow: hidden;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 68px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 24px;
-      color: #454545;
-      font-size: 0.83rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-    }
-
-    h1 {
-      max-width: 650px;
-      font-size: clamp(2.8rem, 5.5vw, 5rem);
-      line-height: 1.06;
-      letter-spacing: -0.075em;
-      font-weight: 800;
-    }
-
-    .hero-highlight {
-      color: var(--accent);
-    }
-
-    .hero-description {
-      max-width: 550px;
-      margin-top: 25px;
-      color: var(--gray);
-      font-size: 1.08rem;
-      line-height: 1.85;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    .hero-note {
-      margin-top: 17px;
-      color: #777777;
-      font-size: 0.81rem;
-    }
-
-    /* Hero product visual */
-
-    .hero-visual {
-      position: relative;
-      min-height: 430px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      border-radius: 28px;
-      background:
-        radial-gradient(ellipse at 70% 15%, #eeedff 0%, transparent 45%),
-        linear-gradient(145deg, #fafafa, #f3f3f5);
-      border: 1px solid #ededed;
-    }
-
-    .visual-decoration {
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      top: 35px;
-      right: 25px;
-      border: 1px solid rgba(99, 91, 255, 0.13);
-      border-radius: 50%;
-    }
-
-    .visual-decoration::before,
-    .visual-decoration::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(99, 91, 255, 0.13);
-      border-radius: 50%;
-    }
-
-    .visual-decoration::before {
-      inset: 22px;
-    }
-
-    .visual-decoration::after {
-      inset: 44px;
-    }
-
-    .assistant-window {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 345px;
-      padding: 23px;
-      border: 1px solid #e5e5e5;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.08);
-    }
-
-    .window-top {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      padding-bottom: 18px;
-      border-bottom: 1px solid #eeeeee;
-    }
-
-    .assistant-avatar {
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: var(--black);
-      color: white;
-    }
-
-    .assistant-avatar svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    .window-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-    }
-
-    .window-status {
-      color: #777777;
-      font-size: 0.74rem;
-    }
-
-    .status-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      margin-right: 4px;
-      border-radius: 50%;
-      background: #22a06b;
-    }
-
-    .chat-label {
-      margin: 20px 0 9px;
-      color: #777777;
-      font-size: 0.74rem;
-    }
-
-    .chat-message {
-      max-width: 95%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      background: #f4f4f5;
-      color: #333333;
-      font-size: 0.8rem;
-      line-height: 1.65;
-    }
-
-    .chat-message.reply {
-      margin: 12px 0 0 auto;
-      background: var(--accent-light);
-      color: #29234f;
-    }
-
-    .chat-footer {
-      margin-top: 19px;
-      padding: 10px 13px;
-      display: flex;
-      justify-content: space-between;
       align-items: center;
       gap: 12px;
-      border: 1px solid #e8e8e8;
-      border-radius: 10px;
-      color: #888888;
-      font-size: 0.76rem;
-    }
-
-    .send-icon {
-      width: 29px;
-      height: 29px;
-      display: grid;
-      place-items: center;
-      border-radius: 8px;
-      background: var(--black);
-      color: white;
-    }
-
-    .send-icon svg {
-      width: 15px;
-      height: 15px;
-    }
-
-    /* General sections */
-
-    .section {
-      padding: 88px 0;
-    }
-
-    .section-muted {
-      background: #f8f8f8;
-      border-top: 1px solid #f0f0f0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-
-    .section-heading {
-      max-width: 720px;
-      margin: 0 auto 48px;
-      text-align: center;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(2rem, 4vw, 3.25rem);
-      line-height: 1.15;
-      letter-spacing: -0.055em;
-      font-weight: 800;
-    }
-
-    .section-heading p {
-      max-width: 600px;
-      margin: 17px auto 0;
-      color: var(--gray);
-      font-size: 1rem;
-    }
-
-    /* Features */
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .feature-card {
-      padding: 29px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition:
-        transform 0.2s,
-        box-shadow 0.2s,
-        border-color 0.2s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: #d2ceff;
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.045);
-    }
-
-    .feature-icon {
-      width: 49px;
-      height: 49px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 23px;
-      border-radius: 13px;
-      background: var(--accent-light);
-      color: var(--accent);
-    }
-
-    .feature-icon svg {
-      width: 25px;
-      height: 25px;
-    }
-
-    .feature-card h3 {
-      margin-bottom: 11px;
-      font-size: 1.07rem;
+      font-size: 21px;
       font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .feature-card p {
-      color: var(--gray);
-      font-size: 0.91rem;
-      line-height: 1.8;
-    }
-
-    /* About */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.85fr 1.15fr;
-      align-items: center;
-      gap: 75px;
-    }
-
-    .about-mark {
-      min-height: 340px;
-      display: grid;
-      place-items: center;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      background:
-        radial-gradient(circle at center, #e8e6ff 0%, #f7f7ff 43%, #f8f8f8 75%);
-    }
-
-    .large-brand-symbol {
-      width: 130px;
-      height: 130px;
-      display: grid;
-      place-items: center;
-      border-radius: 34px;
-      background: var(--black);
-      color: white;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
-    }
-
-    .large-brand-symbol svg {
-      width: 84px;
-      height: 84px;
-    }
-
-    .about-copy .eyebrow {
-      margin-bottom: 17px;
-    }
-
-    .about-copy h2 {
-      margin-bottom: 19px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.055em;
-    }
-
-    .about-copy p {
-      margin-bottom: 22px;
-      color: var(--gray);
-      font-size: 0.98rem;
-    }
-
-    /* Call to action */
-
-    .cta-section {
-      padding: 25px 0 95px;
-    }
-
-    .cta-box {
-      padding: 68px 25px;
-      border: 1px solid #e5e2ff;
-      border-radius: 25px;
-      background: linear-gradient(135deg, #f6f5ff, #ffffff 75%);
-      text-align: center;
-    }
-
-    .cta-box h2 {
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.2;
-      letter-spacing: -0.055em;
-    }
-
-    .cta-box p {
-      max-width: 590px;
-      margin: 17px auto 28px;
-      color: var(--gray);
-    }
-
-    /* Footer */
-
-    .site-footer {
-      padding: 35px 0;
-      border-top: 1px solid var(--border);
-      background: white;
-    }
-
-    .footer-main {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 25px;
-    }
-
-    .footer-brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.05rem;
-      font-weight: 800;
       letter-spacing: -0.5px;
     }
 
-    .footer-brand .brand-symbol {
-      width: 29px;
-      height: 29px;
-      border-radius: 8px;
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #111111;
     }
 
-    .footer-brand .brand-symbol svg {
-      width: 19px;
-      height: 19px;
+    .nav-link {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 100px 0 78px;
+    }
+
+    .hero-logo {
+      width: 88px;
+      height: 88px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #111111;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      margin: 0 auto 18px;
+      font-size: clamp(36px, 7vw, 62px);
+      line-height: 1.12;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      max-width: 570px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 50px;
+      padding: 0 25px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      transition: opacity 0.2s ease;
+    }
+
+    .button:hover {
+      opacity: 0.88;
+    }
+
+    .features {
+      padding: 58px 0 72px;
+      background: var(--soft);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 0 0 35px;
+      font-size: 30px;
+      letter-spacing: -0.7px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      padding: 25px 20px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .feature-icon {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      background: #f0efff;
+      color: var(--accent);
+      font-size: 21px;
+      margin-bottom: 17px;
+    }
+
+    .feature h3 {
+      margin: 0 0 9px;
+      font-size: 18px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cta {
+      text-align: center;
+      padding: 70px 0;
+    }
+
+    .cta h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin: 0 0 25px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .footer-links {
       display: flex;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 23px;
-      color: #555555;
-      font-size: 0.85rem;
     }
 
     .footer-links a:hover {
       color: var(--accent);
     }
 
-    .footer-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-      padding-top: 22px;
-      border-top: 1px solid #eeeeee;
-      color: #777777;
-      font-size: 0.78rem;
-    }
-
-    /* Responsive design */
-
-    @media (max-width: 900px) {
+    @media (max-width: 700px) {
       .hero {
-        padding: 75px 0;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 45px;
-      }
-
-      .hero-copy {
-        text-align: center;
-      }
-
-      .hero-copy h1,
-      .hero-description {
-        margin-inline: auto;
-      }
-
-      .hero-actions {
-        justify-content: center;
-      }
-
-      .hero-visual {
-        width: 100%;
-        max-width: 540px;
-        margin-inline: auto;
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .about-mark {
-        min-height: 270px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: min(100% - 32px, var(--max-width));
-      }
-
-      .navbar {
-        min-height: 69px;
-        gap: 12px;
-      }
-
-      .brand {
-        font-size: 1.2rem;
-      }
-
-      .brand-symbol {
-        width: 32px;
-        height: 32px;
-      }
-
-      .nav-links {
-        gap: 14px;
-        font-size: 0.8rem;
-      }
-
-      .nav-contact {
-        display: none !important;
-      }
-
-      .hero {
-        padding: 65px 0 55px;
-      }
-
-      h1 {
-        font-size: clamp(2.65rem, 12vw, 3.6rem);
-        letter-spacing: -0.065em;
-      }
-
-      .hero-description {
-        font-size: 0.97rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-
-      .hero-actions .button {
-        width: 100%;
-      }
-
-      .hero-visual {
-        min-height: 355px;
-        padding: 17px;
-        border-radius: 20px;
-      }
-
-      .assistant-window {
-        padding: 17px;
-      }
-
-      .section {
-        padding: 65px 0;
-      }
-
-      .section-heading {
-        margin-bottom: 32px;
+        padding: 70px 0 60px;
       }
 
       .feature-grid {
         grid-template-columns: 1fr;
       }
 
-      .feature-card {
-        padding: 25px;
+      .hero p {
+        font-size: 16px;
       }
 
-      .about-mark {
-        min-height: 230px;
+      .hero h1 {
+        letter-spacing: -1px;
       }
 
-      .large-brand-symbol {
-        width: 105px;
-        height: 105px;
-        border-radius: 27px;
-      }
-
-      .large-brand-symbol svg {
-        width: 69px;
-        height: 69px;
-      }
-
-      .cta-section {
-        padding-bottom: 65px;
-      }
-
-      .cta-box {
-        padding: 45px 22px;
-      }
-
-      .footer-main,
-      .footer-bottom {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .footer-links {
-        gap: 16px;
+      .section-title {
+        font-size: 26px;
       }
     }
+  </style>
+</head>
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
-      }
-    }
-  </style></head><body>  <!-- Header -->  <header class="site-header">
-    <div class="container">
-      <nav class="navbar" aria-label="Main navigation">    <a class="brand" href="#home" aria-label="Modegli AI home">
-      <span class="brand-symbol">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 18V6L12 14L19 6V18"
-            stroke="currentColor"
-            stroke-width="2.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span>Modegli <span class="brand-ai">AI</span></span>
-    </a>
+<body>
 
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#about">About</a>
-      <a class="nav-contact" href="#contact">Contact</a>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="./" aria-label="Modegli AI home">
+        <img class="logo" src="logo.webp" alt="Modegli logo">
+        <span>Modegli AI</span>
+      </a>
+
+      <a class="nav-link"
+         href="https://t.me/modegli_bot"
+         target="_blank"
+         rel="noopener noreferrer">
+        Try the Bot →
+      </a>
     </div>
+  </header>
 
-  </nav>
-</div>
+  <main>
+    <section class="hero container">
+      <img class="hero-logo" src="logo.webp" alt="Modegli logo">
 
-  </header>  <main><!-- Hero -->
-<section class="hero" id="home">
-  <div class="container">
-    <div class="hero-grid">
-
-      <div class="hero-copy">
-
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          A smarter way to work
-        </div>
-
-        <h1>
-          Your business.
-          <span class="hero-highlight">Made simpler.</span>
-        </h1>
-
-        <p class="hero-description">
-          Meet Modegli AI, your intelligent assistant for everyday tasks,
-          reminders, customer conversations, and a more organized way
-          to work.
-        </p>
-
-        <div class="hero-actions">
-          <!-- Replace YOUR_BOT_USERNAME with your actual Telegram username -->
-          <a class="button"
-             href="https://t.me/modegli_bot"
-             target="_blank"
-             rel="noopener noreferrer">
-
-            Try Modegli AI
-
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12H19M12 5L19 12L12 19"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-            </svg>
-          </a>
-
-          <a class="button button-light" href="#features">
-            Explore features
-          </a>
-        </div>
-
-        <p class="hero-note">
-          Starting on Telegram. Built with room to grow.
-        </p>
-
-      </div>
-
-      <!-- CSS-based product illustration -->
-      <div class="hero-visual" aria-label="Illustration of a Modegli AI conversation">
-
-        <div class="visual-decoration" aria-hidden="true"></div>
-
-        <div class="assistant-window">
-
-          <div class="window-top">
-            <div class="assistant-avatar">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <rect x="4" y="7" width="16" height="13" rx="4"
-                  stroke="currentColor" stroke-width="1.7"/>
-                <path d="M12 3V7M9 13H9.01M15 13H15.01M9 16H15"
-                  stroke="currentColor"
-                  stroke-width="1.7"
-                  stroke-linecap="round"/>
-              </svg>
-            </div>
-
-            <div>
-              <div class="window-title">Modegli AI</div>
-              <div class="window-status">
-                <span class="status-dot"></span>
-                Your AI assistant
-              </div>
-            </div>
-          </div>
-
-          <div class="chat-label">A conversation with Modegli</div>
-
-          <div class="chat-message">
-            Help me organize my tasks for today.
-          </div>
-
-          <div class="chat-message reply">
-            Let's organize your priorities and reminders so you can
-            focus on what matters.
-          </div>
-
-          <div class="chat-footer">
-            <span>Ask Modegli anything...</span>
-
-            <span class="send-icon">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12H19M12 5L19 12L12 19"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Features -->
-<section class="section section-muted" id="features">
-  <div class="container">
-
-    <div class="section-heading">
-      <h2>Tools for a more productive day.</h2>
-      <p>
-        Discover how Modegli AI aims to make everyday tasks and business
-        interactions easier through one conversational experience.
-      </p>
-    </div>
-
-    <div class="feature-grid">
-
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M20 11.5A7.5 7.5 0 0 1 12.5 19H5L6.7 15.7A7.5 7.5 0 1 1 20 11.5Z"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M8 10H16M8 13.5H13"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <h3>AI Conversations</h3>
-        <p>
-          Ask questions, explore ideas, and get help with everyday tasks
-          through natural conversations.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="8.5"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M12 7V12L15.5 14"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-
-        <h3>Smart Reminders</h3>
-        <p>
-          Keep track of important tasks and reminders to stay organized
-          throughout your day.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3.5L14.4 9.6L20.5 12L14.4 14.4L12 20.5L9.6 14.4L3.5 12L9.6 9.6L12 3.5Z"
-              stroke="currentColor" stroke-width="1.6"
-              stroke-linejoin="round"/>
-          </svg>
-        </div>
-
-        <h3>Conversational Memory</h3>
-        <p>
-          Use supported memory features to make your conversations
-          more useful over time.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3.5" y="7" width="17" height="13.5" rx="2.5"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M8 7V4.5M16 7V4.5M3.5 11H20.5"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linecap="round"/>
-            <path d="M8 15H10M14 15H16"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <h3>Business Management</h3>
-        <p>
-          The Modegli business workflow is designed to help owners
-          organize their activities and customer interactions.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <rect x="3.5" y="5" width="17" height="16" rx="2.5"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M8 3.5V7M16 3.5V7M3.5 10H20.5"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linecap="round"/>
-            <path d="M8 14L10.5 16.5L16 12.5"
-              stroke="currentColor" stroke-width="1.7"
-              stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-
-        <h3>Booking Workflows</h3>
-        <p>
-          The planned booking experience is intended to help customers
-          explore services and submit booking requests.
-        </p>
-      </article>
-
-      <article class="feature-card">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <circle cx="12" cy="12" r="8.5"
-              stroke="currentColor" stroke-width="1.7"/>
-            <path d="M3.8 9H20.2M3.8 15H20.2M12 3.5C14.2 5.8 15.3 8.5 15.3 12S14.2 18.2 12 20.5C9.8 18.2 8.7 15.5 8.7 12S9.8 5.8 12 3.5Z"
-              stroke="currentColor" stroke-width="1.5"
-              stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <h3>Built to Evolve</h3>
-        <p>
-          Starting with Telegram, Modegli AI is designed to leave room
-          for new tools and experiences as the product develops.
-        </p>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- About -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="about-grid">
-
-      <div class="about-mark">
-        <div class="large-brand-symbol">
-          <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <path d="M19 74V26L50 61L81 26V74"
-              stroke="currentColor"
-              stroke-width="8"
-              stroke-linecap="round"
-              stroke-linejoin="round"/>
-          </svg>
-        </div>
-      </div>
-
-      <div class="about-copy">
-        <div class="eyebrow">
-          <span class="eyebrow-dot"></span>
-          About Modegli AI
-        </div>
-
-        <h2>Technology should make life easier.</h2>
-
-        <p>
-          Modegli AI is an evolving technology project focused on making
-          useful digital assistance easier to access for individuals
-          and businesses.
-        </p>
-
-        <p>
-          Our vision is to bring helpful conversations, organization,
-          and business tools together in a simple experience that can
-          grow with people's needs.
-        </p>
-
-        <a class="button button-light" href="#contact">
-          Contact our team
-        </a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Call to action -->
-<section class="cta-section" id="contact">
-  <div class="container">
-    <div class="cta-box">
-
-      <h2>Let's make everyday work simpler.</h2>
+      <h1>Your smart assistant, all in one place.</h1>
 
       <p>
-        Have a question, feedback, or an idea for Modegli AI?
-        We'd be happy to hear from you.
+        Get help with everyday tasks, reminders, and business support
+        through one simple Telegram assistant.
       </p>
 
       <a class="button"
-         href="mailto:modeglicontact@gmail.com">
-
-        Get in touch
-
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M4 6.5H20V18H4V6.5Z"
-            stroke="currentColor" stroke-width="1.7"
-            stroke-linejoin="round"/>
-          <path d="M4.5 7L12 13L19.5 7"
-            stroke="currentColor" stroke-width="1.7"
-            stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
+         href="https://t.me/modegli_bot"
+         target="_blank"
+         rel="noopener noreferrer">
+        Try Modegli AI →
       </a>
+    </section>
 
+    <section class="features">
+      <div class="container">
+        <h2 class="section-title">What Modegli AI can do</h2>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">✦</div>
+            <h3>Smart Assistance</h3>
+            <p>Get help with questions, writing, and everyday tasks.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">◷</div>
+            <h3>Reminders</h3>
+            <p>Organize important tasks and remember what matters.</p>
+          </article>
+
+          <article class="feature">
+            <div class="feature-icon" aria-hidden="true">▦</div>
+            <h3>Business Support</h3>
+            <p>Explore tools designed to help businesses manage their work.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta container">
+      <h2>Ready to get started?</h2>
+      <p>Open Modegli AI on Telegram and give it a try.</p>
+
+      <a class="button"
+         href="https://t.me/modegli_bot"
+         target="_blank"
+         rel="noopener noreferrer">
+        Start on Telegram →
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© 2026 Modegli AI</span>
+
+      <nav class="footer-links" aria-label="Footer">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:modeglicontact@gmail.com">Contact</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </footer>
 
-  </main>  <!-- Footer -->  <footer class="site-footer">
-    <div class="container">  <div class="footer-main">
-
-    <a class="footer-brand" href="#home">
-      <span class="brand-symbol">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M5 18V6L12 14L19 6V18"
-            stroke="currentColor"
-            stroke-width="2.2"
-            stroke-linecap="round"
-            stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span>Modegli <span class="brand-ai">AI</span></span>
-    </a>
-
-    <div class="footer-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms of Service</a>
-      <a href="mailto:modeglicontact@gmail.com">Contact</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    <span>© <span id="year"></span> Modegli AI. All rights reserved.</span>
-    <span>Designed for a simpler digital experience.</span>
-  </div>
-
-</div>
-
-  </footer>  <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script></body>
-  </html>
+</body>
+</html>
