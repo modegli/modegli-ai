@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <meta name="theme-color" content="#000000">
+    <meta name="description"
+          content="Modegli AI - مساعدك الذكي لتنظيم مهامك وإدارة أعمالك.">
+
+    <title>Modegli AI</title>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #000000;
+            --surface: #101010;
+            --surface-hover: #181818;
+            --border: #252525;
+            --text: #ffffff;
+            --muted: #999999;
+            --subtle: #666666;
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            background: var(--bg);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont,
+                "Segoe UI", Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        button, input, textarea {
+            font: inherit;
+        }
+
+        button {
+            color: inherit;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:focus-visible,
+        input:focus-visible,
+        textarea:focus-visible {
+            outline: 2px solid #ffffff;
+            outline-offset: 3px;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 600px;
+            min-height: 100vh;
+            min-height: 100dvh;
+            margin: 0 auto;
+            padding:
+                max(22px, env(safe-area-inset-top))
+                20px
+                calc(100px + env(safe-area-inset-bottom));
+        }
+
+        /* Header */
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            object-fit: contain;
+            background: #101010;
+            border: 1px solid var(--border);
+        }
+
+        .brand-name {
+            font-size: 18px;
+            font-weight: 750;
+            letter-spacing: -0.5px;
+        }
+
+        .brand-label {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .icon-button {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 13px;
+            font-size: 19px;
+        }
+
+        .icon-button:active {
+            background: var(--surface-hover);
+        }
+
+        /* Main welcome */
+
+        .welcome {
+            padding: 34px 0 27px;
+        }
+
+        .eyebrow {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 13px;
+        }
+
+        h1 {
+            font-size: clamp(28px, 7vw, 36px);
+            line-height: 1.4;
+            font-weight: 750;
+            letter-spacing: -1px;
+        }
+
+        .welcome p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.9;
+            margin-top: 10px;
+            max-width: 390px;
+        }
+
+        /* Assistant card */
+
+        .assistant-card {
+            position: relative;
+            overflow: hidden;
+            background: #0b0b0b;
+            border: 1px solid #303030;
+            border-radius: 22px;
+            padding: 23px 20px;
+            margin-bottom: 32px;
+        }
+
+        .assistant-top {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 20px;
+        }
+
+        .assistant-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            background: #191919;
+            border: 1px solid #333333;
+            border-radius: 15px;
+            font-size: 23px;
+        }
+
+        .assistant-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .assistant-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #777777;
+        }
+
+        .assistant-description {
+            color: #b0b0b0;
+            font-size: 13px;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .primary-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            min-height: 49px;
+            border: 1px solid #ffffff;
+            border-radius: 13px;
+            background: #ffffff;
+            color: #000000;
+            font-size: 14px;
+            font-weight: 750;
+            transition: opacity 0.15s ease;
+        }
+
+        .primary-button:active {
+            opacity: 0.8;
+        }
+
+        /* Sections */
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+
+        .section-heading h2 {
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .section-note {
+            color: var(--subtle);
+            font-size: 11px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .feature {
+            min-width: 0;
+            min-height: 146px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: right;
+            padding: 17px 15px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            transition: background 0.15s ease;
+        }
+
+        .feature:active {
+            background: var(--surface-hover);
+        }
+
+        .feature-icon {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            background: #1b1b1b;
+            border: 1px solid #292929;
+            border-radius: 12px;
+            font-size: 18px;
+            margin-bottom: 17px;
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .feature-description {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.8;
+            margin-top: 7px;
+        }
+
+        /* Additional information */
+
+        .info-box {
+            margin-top: 28px;
+            padding: 17px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: #080808;
+        }
+
+        .info-title {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .info-text {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        /* Bottom navigation */
+
+        .bottom-nav {
+            position: fixed;
+            z-index: 10;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.96);
+            border-top: 1px solid var(--border);
+            padding:
+                12px 12px
+                max(12px, env(safe-area-inset-bottom));
+        }
+
+        .nav-inner {
+            width: 100%;
+            max-width: 560px;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 4px;
+        }
+
+        .nav-item {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 5px 2px;
+            background: transparent;
+            border: 0;
+            color: var(--subtle);
+            font-size: 10px;
+        }
+
+        .nav-item .nav-icon {
+            font-size: 20px;
+            line-height: 1.2;
+        }
+
+        .nav-item.active {
+            color: #ffffff;
+        }
+
+        /* Secondary screens */
+
+        .screen {
+            display: none;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        .page-heading {
+            padding: 29px 0 22px;
+        }
+
+        .page-heading h1 {
+            font-size: 27px;
+        }
+
+        .page-heading p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+            margin-top: 8px;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: var(--surface);
+            padding: 10px 13px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+
+        .empty-state {
+            padding: 35px 20px;
+            text-align: center;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: var(--radius);
+        }
+
+        .empty-icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .empty-state h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.9;
+        }
+
+        .chat-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .message {
+            max-width: 88%;
+            padding: 12px 14px;
+            border-radius: 14px;
+            font-size: 13px;
+            line-height: 1.9;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+
+        .message.assistant {
+            align-self: flex-start;
+            background: #151515;
+            border: 1px solid #292929;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background: #ffffff;
+            color: #000000;
+        }
+
+        .chat-form {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            padding: 8px;
+            background: #111111;
+            border: 1px solid #303030;
+            border-radius: 15px;
+        }
+
+        .chat-input {
+            flex: 1;
+            min-width: 0;
+            min-height: 40px;
+            max-height: 120px;
+            resize: vertical;
+            border: 0;
+            outline: 0;
+            background: transparent;
+            color: white;
+            padding: 10px 7px;
+            font-size: 13px;
+        }
+
+        .send-button {
+            min-width: 43px;
+            height: 43px;
+            border: 0;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #000000;
+            font-size: 18px;
+        }
+
+        .send-button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .notice {
+            margin-top: 12px;
+            color: var(--subtle);
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .settings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .settings-item {
+            padding: 16px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            border-radius: 13px;
+        }
+
+        .settings-item strong {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .settings-item p {
+            color: var(--muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer {
+            padding-top: 30px;
+            text-align: center;
+            color: var(--subtle);
+            font-size: 11px;
+        }
+
+        .footer a {
+            color: #aaaaaa;
+            text-decoration: none;
+            margin: 0 6px;
+        }
+
+        .toast {
+            position: fixed;
+            z-index: 20;
+            left: 20px;
+            right: 20px;
+            bottom: calc(90px + env(safe-area-inset-bottom));
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 13px 16px;
+            border: 1px solid #333333;
+            border-radius: 12px;
+            background: #181818;
+            color: white;
+            font-size: 12px;
+            line-height: 1.8;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(8px);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (min-width: 480px) {
+            .app {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .feature {
+                min-height: 155px;
+                padding: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <header class="header">
+        <div class="brand">
+            <img
+                class="logo"
+                src="logo.webp"
+                alt="Modegli AI"
+                onerror="this.style.display='none'"
+            >
+
+            <div>
+                <div class="brand-name">MODEGLI AI</div>
+                <div class="brand-label">مساعدك الذكي</div>
+            </div>
+        </div>
+
+        <button
+            class="icon-button"
+            type="button"
+            aria-label="الإعدادات"
+            data-screen="account"
+        >⚙</button>
+    </header>
+
+    <main>
+
+        <!-- Home -->
+        <section id="home" class="screen active">
+
+            <div class="welcome">
+                <div class="eyebrow">مساحة واحدة لإنجاز المزيد</div>
+                <h1 id="welcomeTitle">أهلًا بك في<br>Modegli AI.</h1>
+                <p>
+                    مساعدك الذكي للمحادثة وتنظيم المهام
+                    وإدارة أعمالك بسهولة.
+                </p>
+            </div>
+
+            <div class="assistant-card">
+                <div class="assistant-top">
+                    <div class="assistant-icon" aria-hidden="true">✳</div>
+
+                    <div>
+                        <div class="assistant-title">المساعد الذكي</div>
+                        <div class="assistant-status">
+                            <span class="status-dot"></span>
+                            جاهز للمساعدة
+                        </div>
+                    </div>
+                </div>
+
+                <p class="assistant-description">
+                    اطرح سؤالك، اطلب المساعدة في الكتابة،
+                    أو ابدأ بتنظيم يومك.
+                </p>
+
+                <button
+                    class="primary-button"
+                    type="button"
+                    data-screen="chat"
+                >
+                    ابدأ المحادثة <span aria-hidden="true">←</span>
+                </button>
+            </div>
+
+            <div class="section-heading">
+                <h2>خدماتك</h2>
+                <span class="section-note">كل شيء في مكان واحد</span>
+            </div>
+
+            <div class="features">
+
+                <button
+                    class="feature"
+                    type="button"
+                    data-screen="chat"
+                >
+                    <span class="feature-icon" aria-hidden="true">✳</span>
+                    <span class="feature-title">المحادثة الذكية</span>
+                    <span class="feature-description">
+                        اسأل، اكتب، وفكّر مع مساعدك.
+                    </span>
+                </button>
+
+                <button
+                    class="feature"
+                    type="button"
+                    data-screen="reminders"
+                >
+                    <span class="feature-icon" aria-hidden="true">◷</span>
+                    <span class="feature-title">التذكيرات</span>
+                    <span class="feature-description">
+                        نظّم مواعيدك وتذكّر مهامك.
+                    </span>
+                </button>
+
+                <button
+                    class="feature"
+                    type="button"
+                    data-screen="business"
+                >
+                    <span class="feature-icon" aria-hidden="true">▦</span>
+                    <span class="feature-title">إدارة الأعمال</span>
+                    <span class="feature-description">
+                        خدماتك وحجوزات أنشطتك.
+                    </span>
+                </button>
+
+                <button
+                    class="feature"
+                    type="button"
+                    data-screen="account"
+                >
+                    <span class="feature-icon" aria-hidden="true">◉</span>
+                    <span class="feature-title">حسابي</span>
+                    <span class="feature-description">
+                        إعداداتك وتفضيلاتك.
+                    </span>
+                </button>
+
+            </div>
+
+            <div class="info-box">
+                <div class="info-title">مصمم ليعمل معك</div>
+                <p class="info-text">
+                    تجربة بسيطة تساعدك على الوصول إلى خدمات Modegli
+                    دون قوائم معقدة.
+                </p>
+            </div>
+
+        </section>
+
+        <!-- Chat -->
+        <section id="chat" class="screen">
+            <div class="page-heading">
+                <h1>المساعد الذكي</h1>
+                <p>ما الذي يمكنني مساعدتك فيه اليوم؟</p>
+            </div>
+
+            <div class="chat-messages" id="chatMessages"
+                 aria-live="polite">
+                <div class="message assistant">
+                    أهلًا بك! أنا مساعد Modegli.
+                    يمكنك كتابة رسالتك هنا.
+                </div>
+            </div>
+
+            <form class="chat-form" id="chatForm">
+                <textarea
+                    id="chatInput"
+                    class="chat-input"
+                    rows="1"
+                    maxlength="4000"
+                    placeholder="اكتب رسالتك..."
+                    aria-label="رسالتك"
+                    required
+                ></textarea>
+
+                <button
+                    class="send-button"
+                    type="submit"
+                    aria-label="إرسال الرسالة"
+                >↑</button>
+            </form>
+
+            <p class="notice">
+                هذه واجهة أولية. إرسال الرسائل إلى الذكاء الاصطناعي
+                لن يعمل حتى نربطها بالخادم.
+            </p>
+        </section>
+
+        <!-- Reminders -->
+        <section id="reminders" class="screen">
+            <div class="page-heading">
+                <h1>التذكيرات</h1>
+                <p>تابع مواعيدك ومهامك من مكان واحد.</p>
+            </div>
+
+            <div class="empty-state">
+                <div class="empty-icon" aria-hidden="true">◷</div>
+                <h3>تذكيراتك في مكان واحد</h3>
+                <p>
+                    سنربط هذه الصفحة بالتذكيرات المحفوظة في البوت،
+                    حتى تتمكن من عرضها وإدارتها من التطبيق.
+                </p>
+            </div>
+        </section>
+
+        <!-- Business -->
+        <section id="business" class="screen">
+            <div class="page-heading">
+                <h1>إدارة الأعمال</h1>
+                <p>أدِر أنشطتك وخدماتك وحجوزاتك بسهولة.</p>
+            </div>
+
+            <div class="features">
+
+                <button class="feature" type="button"
+                        data-action="businesses">
+                    <span class="feature-icon" aria-hidden="true">▦</span>
+                    <span class="feature-title">أنشطتي</span>
+                    <span class="feature-description">
+                        عرض الأنشطة المرتبطة بحسابك.
+                    </span>
+                </button>
+
+                <button class="feature" type="button"
+                        data-action="services">
+                    <span class="feature-icon" aria-hidden="true">☷</span>
+                    <span class="feature-title">الخدمات</span>
+                    <span class="feature-description">
+                        مراجعة الخدمات والأسعار.
+                    </span>
+                </button>
+
+                <button class="feature" type="button"
+                        data-action="bookings">
+                    <span class="feature-icon" aria-hidden="true">◷</span>
+                    <span class="feature-title">الحجوزات</span>
+                    <span class="feature-description">
+                        متابعة المواعيد والحجوزات.
+                    </span>
+                </button>
+
+                <button class="feature" type="button"
+                        data-action="customer">
+                    <span class="feature-icon" aria-hidden="true">⌕</span>
+                    <span class="feature-title">استعراض الخدمات</span>
+                    <span class="feature-description">
+                        الوصول إلى الخدمات المتاحة للعملاء.
+                    </span>
+                </button>
+
+            </div>
+
+            <p class="notice">
+                ستظهر البيانات الفعلية بعد ربط الواجهة بقاعدة البيانات
+                والتحقق من صلاحيات المستخدم.
+            </p>
+        </section>
+
+        <!-- Account -->
+        <section id="account" class="screen">
+            <div class="page-heading">
+                <h1>حسابي</h1>
+                <p>إعدادات وتجربة استخدام Modegli AI.</p>
+            </div>
+
+            <div class="settings-list">
+
+                <div class="settings-item">
+                    <strong>حساب Telegram</strong>
+                    <p id="accountName">
+                        سيتم عرض معلومات الحساب بعد التحقق من بيانات Telegram.
+                    </p>
+                </div>
+
+                <div class="settings-item">
+                    <strong>اللغة</strong>
+                    <p>العربية — يمكن إضافة لغات أخرى لاحقًا.</p>
+                </div>
+
+                <div class="settings-item">
+                    <strong>الخصوصية</strong>
+                    <p>
+                        تعرّف على كيفية التعامل مع بياناتك.
+                        <a href="privacy.html"
+                           style="color:#ffffff">سياسة الخصوصية</a>
+                    </p>
+                </div>
+
+                <div class="settings-item">
+                    <strong>شروط الاستخدام</strong>
+                    <p>
+                        <a href="terms.html"
+                           style="color:#ffffff">قراءة شروط الاستخدام</a>
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div>MODEGLI AI</div>
+        <div style="margin-top:10px">
+            <a href="privacy.html">الخصوصية</a>
+            <a href="terms.html">الشروط</a>
+        </div>
+    </footer>
+
+</div>
+
+<!-- Bottom navigation -->
+<nav class="bottom-nav" aria-label="التنقل الرئيسي">
+    <div class="nav-inner">
+
+        <button class="nav-item active" type="button"
+                data-screen="home">
+            <span class="nav-icon" aria-hidden="true">⌂</span>
+            <span>الرئيسية</span>
+        </button>
+
+        <button class="nav-item" type="button"
+                data-screen="chat">
+            <span class="nav-icon" aria-hidden="true">✳</span>
+            <span>المساعد</span>
+        </button>
+
+        <button class="nav-item" type="button"
+                data-screen="reminders">
+            <span class="nav-icon" aria-hidden="true">◷</span>
+            <span>التذكيرات</span>
+        </button>
+
+        <button class="nav-item" type="button"
+                data-screen="account">
+            <span class="nav-icon" aria-hidden="true">◉</span>
+            <span>حسابي</span>
+        </button>
+
+    </div>
+</nav>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+    "use strict";
+
+    const tg = window.Telegram?.WebApp;
+
+    if (tg) {
+        tg.ready();
+        tg.expand();
+
+        // Preserve the black design inside Telegram.
+        try {
+            tg.setHeaderColor("#000000");
+            tg.setBackgroundColor("#000000");
+            tg.setBottomBarColor("#000000");
+        } catch (_) {}
+    }
+
+    const screens = [
+        "home",
+        "chat",
+        "reminders",
+        "business",
+        "account"
+    ];
+
+    let currentScreen = "home";
+    let toastTimer;
+
+    const toast = document.getElementById("toast");
+
+    function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3200);
+    }
+
+    function navigate(screenName) {
+        if (!screens.includes(screenName)) {
+            return;
+        }
+
+        currentScreen = screenName;
+
+        document.querySelectorAll(".screen").forEach(screen => {
+            screen.classList.toggle(
+                "active",
+                screen.id === screenName
+            );
+        });
+
+        document.querySelectorAll(".nav-item").forEach(button => {
+            button.classList.toggle(
+                "active",
+                button.dataset.screen === screenName
+            );
+        });
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+        if (tg) {
+            tg.HapticFeedback?.selectionChanged();
+        }
+    }
+
+    document.querySelectorAll("[data-screen]").forEach(button => {
+        button.addEventListener("click", () => {
+            navigate(button.dataset.screen);
+        });
+    });
+
+    // The actual backend will determine the user's permissions.
+    document.querySelectorAll("[data-action]").forEach(button => {
+        button.addEventListener("click", () => {
+            showToast(
+                "سيتم تفعيل هذه الخدمة عند ربط التطبيق بالخادم."
+            );
+        });
+    });
+
+    // Show Telegram's available display name, without treating it
+    // as proof of identity or authorization.
+    const telegramUser = tg?.initDataUnsafe?.user;
+
+    if (telegramUser) {
+        const firstName = telegramUser.first_name || "";
+
+        if (firstName) {
+            document.getElementById("welcomeTitle").textContent =
+                `أهلًا ${firstName}،\nمرحبًا بك في Modegli AI.`;
+
+            document.getElementById("welcomeTitle").style.whiteSpace =
+                "pre-line";
+        }
+
+        document.getElementById("accountName").textContent =
+            "تم العثور على معلومات عرض من Telegram. " +
+            "سيتم التحقق من الهوية والصلاحيات عبر الخادم.";
+    }
+
+    // This demo deliberately does not send messages to an AI service.
+    // A secure backend integration is required before enabling that.
+    const chatForm = document.getElementById("chatForm");
+    const chatInput = document.getElementById("chatInput");
+    const chatMessages = document.getElementById("chatMessages");
+
+    chatForm.addEventListener("submit", event => {
+        event.preventDefault();
+
+        const message = chatInput.value.trim();
+
+        if (!message) {
+            return;
+        }
+
+        const bubble = document.createElement("div");
+        bubble.className = "message user";
+        bubble.textContent = message;
+
+        chatMessages.appendChild(bubble);
+        chatInput.value = "";
+
+        showToast(
+            "ظهرت رسالتك في الواجهة. سنفعّل الردود بعد ربط الخادم."
+        );
+
+        chatMessages.scrollIntoView({
+            behavior: "smooth",
+            block: "end"
+        });
+    });
+
+    // Handle Telegram's native Back button when available.
+    if (tg?.BackButton) {
+        tg.BackButton.onClick(() => {
+            navigate("home");
+        });
+    }
+})();
+</script>
+
+</body>
+  </html>
